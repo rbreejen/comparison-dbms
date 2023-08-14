@@ -1,4 +1,4 @@
-# Comparison of CDC data replication services
+# Comparison of Database Management Systems (DBMS)
 
 [![plot](./www/assets/images/img.png)](https://rbreejen.github.io/comparison-dbms/www/table.html)
 
