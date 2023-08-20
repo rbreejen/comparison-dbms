@@ -27,8 +27,9 @@ tbl <- reactable(data,
                  pagination = FALSE,
                  borderless=T,
                  columnGroups = list(
-                   colGroup(name = "Market Leaders", columns = c("Oracle", "MySQL", "SQL server", "PostgreSQL","Databricks", "Snowflake")),
-                   colGroup(name = "Disruptors", columns = c("Clickhouse", "CockroachDB","Yugabyte", "TiDB", "SingleStore", "DuckDB"))
+                   colGroup(name = "OLTP", columns = c("Oracle", "MySQL", "PostgreSQL", "CockroachDB","Yugabyte"), html = T),
+                   colGroup(name = "OLAP", columns = c("Clickhouse", "Doris", "Databricks", "Snowflake","DuckDB"), html = T),
+                   colGroup(name = "<a href='https://dl.acm.org/doi/pdf/10.1145/3514221.3522565'>HTAP</a>", columns = c("TiDB", "SingleStore"), html = T)
                  ),
                  defaultColDef = colDef(
                    vAlign = "center",
@@ -71,14 +72,6 @@ tbl <- reactable(data,
               minWidth = 90,
               name = "<div class='header-wrapper'>MySQL</div>"
             ),
-            `SQL server` = colDef(
-              html=TRUE,
-              align = "center",
-              cell = function(value) column_transformer(value),
-              class = "border-left",
-              minWidth = 90,
-              name = "<div class='header-wrapper'>SQL server</div>"
-            ),
             `PostgreSQL` = colDef(
               html=TRUE,
               align = "center",
@@ -111,6 +104,14 @@ tbl <- reactable(data,
               minWidth = 90,
               name = "<div class='header-wrapper'>Clickhouse</div>"
             ),
+            `Doris` = colDef(
+              html=TRUE,
+              align = "center",
+              cell = function(value) column_transformer(value),
+              class = "border-left",
+              minWidth = 90,
+              name = "<div class='header-wrapper'>Doris</div>"
+            ),            
             `CockroachDB` = colDef(
               html=TRUE,
               align = "center",
@@ -150,7 +151,7 @@ tbl <- reactable(data,
               class = "border-left",
               minWidth = 90,
               name = "<div class='header-wrapper'>DuckDB</div>"
-            ),            
+            ),
             description = colDef(show = FALSE),
             is_advanced = colDef(show = FALSE)
           ),
@@ -165,8 +166,8 @@ tbl <- reactable(data,
           ),
           defaultExpanded = T,
           rowStyle = function(index) {
-            if (index %in% c(2:15, 19, 23:26, 31, 36:42)) list(backgroundColor = "rgb(247, 246, 235)")
-            else if (index %in% c(17, 21, 28:29, 33:34)) list(backgroundColor = "rgb(237, 241, 246)")
+            if (index %in% c(2:11, 19, 23, 32:41, 43, 48:49, 51:62)) list(backgroundColor = "rgb(247, 246, 235)")
+            else if (index %in% c(13:17, 21, 25:30, 39, 45:46)) list(backgroundColor = "rgb(237, 241, 246)")
           },
           sortable = F,
           class = "comparison-tbl")
