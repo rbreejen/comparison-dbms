@@ -166,8 +166,8 @@ tbl <- reactable(data,
           ),
           defaultExpanded = T,
           rowStyle = function(index) {
-            if (index %in% c(2:11, 19, 23, 32:41, 43, 48:49, 51:62)) list(backgroundColor = "rgb(247, 246, 235)")
-            else if (index %in% c(13:17, 21, 25:30, 39, 45:46)) list(backgroundColor = "rgb(237, 241, 246)")
+            if (index %in% c(2:11, 19, 23:27, 36:45, 49:53, 58:72)) list(backgroundColor = "rgb(247, 246, 235)")
+            else if (index %in% c(13:17, 21, 29:34, 47, 55:56)) list(backgroundColor = "rgb(237, 241, 246)")
           },
           sortable = F,
           class = "comparison-tbl")
